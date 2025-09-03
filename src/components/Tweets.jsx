@@ -1,10 +1,11 @@
 import { useContext } from 'react'
 import CreateTweet from './CreateTweet'
 import Tweet from './Tweet'
-import { MyContext } from '../App'
+import { MyContext, ThemeContext } from '../App'
 
-export default function Tweets({ theme }) {
+export default function Tweets() {
 const {tweets, setTweets, user} = useContext(MyContext)
+const {theme} = useContext(ThemeContext)
 
   return (
         <main>
@@ -12,13 +13,13 @@ const {tweets, setTweets, user} = useContext(MyContext)
                 <h2 className="title">Home</h2>
             </div>
 
-            <CreateTweet theme={theme} />
+            <CreateTweet />
 
             <div className="show-more-tweets">
                 <p>Show 35 Tweets</p>
             </div>
 
-            {tweets.map((tweet, index) => <Tweet tweet={tweet} theme={theme} key={index} />)}
+            {tweets.map((tweet, index) => <Tweet tweet={tweet}  key={index} />)}
         </main>
     )
 }
